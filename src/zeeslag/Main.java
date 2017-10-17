@@ -14,6 +14,10 @@ public class Main {
 		InitializeGame init = new InitializeGame();
 		
 		init.printIntro();
-		init.getPlayerAmount();
+		init.askPlayerAmount();
+		
+		int amount = init.getPlayerAmount();
+		
+		out.println("players: "+amount);
 	}
 }
