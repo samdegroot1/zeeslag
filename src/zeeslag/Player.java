@@ -3,6 +3,7 @@ package zeeslag;
 public class Player {
 	
 	private String name;
+	private Field field;
 
 	public Player () {
 		
@@ -25,19 +26,12 @@ public class Player {
 		}
 	}
 	
-	public String askPlayerName(int number) {
+	public Field getField() {
+	
+		return this.field;
+	}
+	
+	public void setField() {
 		
-		if(number == 1) {
-			
-			Main.out.print("Wat is de naam van speler 1?: ");
-		}
-		
-		else {
-			Main.out.print("Wat is de naam van speler 2?: ");
-		}
-		
-		String name = Main.in.next();
-		
-		return name;
 	}
 }

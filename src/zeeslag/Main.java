@@ -9,10 +9,12 @@ public class Main {
 	public static final PrintStream out = System.out;
 	public static final boolean cheat = false;
 
-	public static void main(String[] args) {		
+	public static void main(String[] args) {
 		
-		SeaBattle game = new SeaBattle();
-		game.printIntro();
-		game.askPlayers();
+		Main.out.println("Welkom bij het spelletje Zeeslag!");
+		Main.out.println("Probeer de oorlogsbodems van je tegenstander tot zinken te brengen");
+		Main.out.println("voor hij jouw boten te pakken heeft genomen. \n");
+		
+		SeaBattle game = new SeaBattle();		
 	}
 }

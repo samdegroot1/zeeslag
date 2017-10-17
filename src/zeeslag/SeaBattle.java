@@ -7,47 +7,24 @@ public class SeaBattle {
 
 	public SeaBattle() {
 		
-		this.printIntro();
-		int amount = this.askPlayers();
 		
-		if(amount == 1) {
-			
-			player1 = new Player();
-			player2 = new Player();
-			
-			player1.setName(player1.askPlayerName(1));
-		}
-		
-		else {
-			
-			player1 = new Player();
-			player2 = new Player();
-			
-			player1.setName(player1.askPlayerName(1));
-			player2.setName(player2.askPlayerName(2));
-		}
 	}
 	
-	public void printIntro() {
+	public Player getPlayer1() {
 		
-		Main.out.println("Welkom bij het spelletje Zeeslag!");
-		Main.out.println("Probeer de oorlogsbodems van je tegenstander tot zinken te brengen");
-		Main.out.println("voor hij jouw boten te pakken heeft genomen. \n");
+		return this.player1;
 	}
 	
-	public int askPlayers() {
+	public void setPlayer1 () {
 		
-		Main.out.print("Geef aantal spelers (1/2):");
+	}
+	
+	public Player getPlayer2() {
 		
-		int amount = Main.in.nextInt();
+		return this.player2;
+	}
+	
+	public void setPlayer2() {
 		
-		if(amount <= 0 || amount >= 3) {
-			
-			Main.out.println("** Dat is geen geldig aantal spelers! **\n");
-			
-			askPlayers();
-		}
-		
-		return amount;
 	}
 }
