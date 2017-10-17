@@ -15,6 +15,6 @@ public class Main {
 		Main.out.println("Probeer de oorlogsbodems van je tegenstander tot zinken te brengen");
 		Main.out.println("voor hij jouw boten te pakken heeft genomen. \n");
 		
-		SeaBattle game = new SeaBattle();		
+		SeaBattle game = new SeaBattle();
 	}
 }
