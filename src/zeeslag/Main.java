@@ -12,12 +12,22 @@ public class Main {
 	public static void main(String[] args) {
 		
 		InitializeGame init = new InitializeGame();
+		SeaBattle game;
 		
 		init.printIntro();
 		init.askPlayerAmount();
 		
-		int amount = init.getPlayerAmount();
+		String[] names = init.askPlayerNames();
 		
-		out.println("players: "+amount);
+		if(names.length == 1) {
+			
+			game = new SeaBattle(names[0]);
+		} 
+		else {
+			
+			game = new SeaBattle(names[0], names[1]);
+		}
+		
+		game.printPlayers();
 	}
 }

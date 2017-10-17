@@ -5,8 +5,9 @@ public class Player {
 	private String name;
 	private Field field;
 
-	public Player () {
+	public Player (String name) {
 		
+		this.setName(name);
 	}
 	
 	public String getName() {
@@ -14,7 +15,7 @@ public class Player {
 		return this.name;
 	}
 	
-	public void setName(String name) {
+	private void setName(String name) {
 		
 		if(!name.equals(null) || !name.isEmpty()) {
 		
