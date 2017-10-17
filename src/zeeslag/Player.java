@@ -4,9 +4,8 @@ public class Player {
 	
 	private String name;
 
-	public Player (String name) {
+	public Player () {
 		
-		this.setName(name);
 	}
 	
 	public String getName() {
@@ -24,5 +23,21 @@ public class Player {
 			
 			Main.out.println("Ongeldige naam!");
 		}
+	}
+	
+	public String askPlayerName(int number) {
+		
+		if(number == 1) {
+			
+			Main.out.print("Wat is de naam van speler 1?: ");
+		}
+		
+		else {
+			Main.out.print("Wat is de naam van speler 2?: ");
+		}
+		
+		String name = Main.in.next();
+		
+		return name;
 	}
 }

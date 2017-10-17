@@ -11,22 +11,8 @@ public class Main {
 
 	public static void main(String[] args) {		
 		
-		SeaBattle game = new SeaBattle(askPlayers());
-	}
-	
-	public static int askPlayers() {
-		
-		Main.out.print("Geef aantal spelers (1/2):");
-		
-		int amount = in.nextInt();
-		
-		if(amount <= 0 || amount >= 3) {
-			
-			Main.out.println("** Dat is geen geldig aantal spelers! **\n");
-			
-			askPlayers();
-		}
-		
-		return amount;
+		SeaBattle game = new SeaBattle();
+		game.printIntro();
+		game.askPlayers();
 	}
 }
