@@ -11,10 +11,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Main.out.println("Welkom bij het spelletje Zeeslag!");
-		Main.out.println("Probeer de oorlogsbodems van je tegenstander tot zinken te brengen");
-		Main.out.println("voor hij jouw boten te pakken heeft genomen. \n");
+		InitializeGame init = new InitializeGame();
 		
-		SeaBattle game = new SeaBattle();
+		init.printIntro();
+		init.getPlayerAmount();
 	}
 }
