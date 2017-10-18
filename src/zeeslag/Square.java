@@ -2,21 +2,26 @@ package zeeslag;
 
 public class Square {
 
-	private char ship;
+	private String ship;
 	private boolean shot;
 	
-	public char getShip() {
+	
+	public Square() {
 	
 		this.setShot(false);
-		return ship;
 	}
-	public void setShip(char ship) {
+	
+	public String getShip() {
+			
+		return this.ship;
+	}
+	public void setShip(String ship) {
 	
 		this.ship = ship;
 	}
 	public boolean isShot() {
 	
-		return shot;
+		return this.shot;
 	}
 	public void setShot(boolean shot) {
 	

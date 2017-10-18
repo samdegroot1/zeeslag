@@ -4,21 +4,35 @@ import java.util.HashMap;
 
 public class Field {
 
-	private HashMap <String, Square> field;
+	private HashMap <String, Square> map;
 	private int sunkShips;
 	
 	public Field() {
 		
-		this.setField(new HashMap());
+		this.setMap(new HashMap<String, Square>());
 		this.generateField();
 	}
-
 	
-	private void setField(HashMap field) {
+	public HashMap<String, Square> getMap() {
 		
-		this.field = field;
+		return this.map;
 	}
-
+	
+	public void setMap(HashMap<String, Square> map) {
+		
+		this.map = map;
+	}
+	
+	public int getSunkShips() {
+	
+		return this.sunkShips;
+	}
+	
+	public void setSunkShips(int number) {
+		
+		this.sunkShips = number;
+	}
+	
 
 	private  void generateField() {
 		
@@ -26,7 +40,7 @@ public class Field {
 			
 			for(char a = 'A'; a < 'K'; a++) {
 			
-				field.put(i+"_"+a, new Square());
+				map.put(i+""+a, new Square());
 			}			
 		}
 	}
@@ -45,14 +59,18 @@ public class Field {
 			
 			for(char a = 'A'; a < 'K'; a++) {
 				
-				Square test = field.get(i+"_"+a);
+				Square sq = map.get(i+""+a);
 				
-				if(test.isShot()) {
+				if(sq.isShot() && sq.getShip() != null) {
 					
 					Main.out.print("~");
 				}
-				
+				if(sq.isShot() && sq.getShip() != null) {
+					
+					Main.out.print("~");
+				}			
 				else {
+					
 					Main.out.print(".");
 				}
 			}

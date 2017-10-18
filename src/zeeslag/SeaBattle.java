@@ -36,22 +36,26 @@ public class SeaBattle {
 		this.player2 = player2;
 	}
 	
-	public void printPlayers() {
+	private void printPlayers() {
 		
 		Main.out.println("\n**Spelers**");
 		if(player1 != null) {
 			
-			Main.out.println("Speler 1: " + player1.getName());
+			Main.out.println("Speler 1: " + this.getPlayer1().getName());
 		}
 		
 		if(player2 != null) {
 			
-			Main.out.println("Speler 2: " + player2.getName());
+			Main.out.println("Speler 2: " + this.getPlayer2().getName() + "\n");
 		}
 	}
 	
 	public void play() {
 	
-		player1.printField();
+		this.printPlayers();
+		
+		if(this.getPlayer1() != null && this.getPlayer2() != null) {
+			
+		}
 	}
 }
