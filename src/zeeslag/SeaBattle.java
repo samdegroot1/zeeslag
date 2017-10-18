@@ -5,15 +5,15 @@ public class SeaBattle {
 	private Player player1;
 	private Player player2;
 
-	public SeaBattle(String p1) {
+	public SeaBattle(Player p1) {
 		
-		this.setPlayer1(new Player(p1));
+		this.setPlayer1(p1);
 	}
 	
-	public SeaBattle(String p1, String p2) {
+	public SeaBattle(Player p1, Player p2) {
 		
-		this.setPlayer1(new Player(p1));
-		this.setPlayer2(new Player(p2));
+		this.setPlayer1(p1);
+		this.setPlayer2(p2);
 	}
 
 	public Player getPlayer1() {
@@ -21,7 +21,7 @@ public class SeaBattle {
 		return player1;
 	}
 
-	private void setPlayer1(Player player1) {
+	public void setPlayer1(Player player1) {
 		
 		this.player1 = player1;
 	}
@@ -31,7 +31,7 @@ public class SeaBattle {
 		return player2;
 	}
 
-	private void setPlayer2(Player player2) {
+	public void setPlayer2(Player player2) {
 		
 		this.player2 = player2;
 	}
@@ -48,5 +48,10 @@ public class SeaBattle {
 			
 			Main.out.println("Speler 2: " + player2.getName());
 		}
+	}
+	
+	public void play() {
+	
+		player1.printField();
 	}
 }

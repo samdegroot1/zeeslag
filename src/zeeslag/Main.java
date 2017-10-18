@@ -21,13 +21,18 @@ public class Main {
 		
 		if(names.length == 1) {
 			
-			game = new SeaBattle(names[0]);
+			Player player1 = new Player(names[0]);
+			
+			game = new SeaBattle(player1);
 		} 
 		else {
 			
-			game = new SeaBattle(names[0], names[1]);
+			Player player1 = new Player(names[0]);
+			Player player2 = new Player(names[1]);
+			
+			game = new SeaBattle(player1, player2);
 		}
 		
-		game.printPlayers();
+		game.play();
 	}
 }

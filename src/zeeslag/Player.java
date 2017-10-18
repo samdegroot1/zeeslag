@@ -8,6 +8,7 @@ public class Player {
 	public Player (String name) {
 		
 		this.setName(name);
+		this.setField(new Field());
 	}
 	
 	public String getName() {
@@ -32,7 +33,14 @@ public class Player {
 		return this.field;
 	}
 	
-	public void setField() {
+	public void setField(Field field) {
 		
+		this.field = field;
+	}
+	
+	public void printField() {
+		
+		Main.out.println("\n** Speelveld: " + this.getName() + " **");
+		field.print();
 	}
 }

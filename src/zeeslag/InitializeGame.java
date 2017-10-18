@@ -5,7 +5,7 @@ public class InitializeGame {
 	
 	private int playerAmount;
 	
-	public int getPlayerAmount() {
+	private int getPlayerAmount() {
 		
 		return this.playerAmount;
 	}
