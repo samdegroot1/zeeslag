@@ -28,12 +28,12 @@ public class Player {
 		}
 	}
 	
-	public Field getField() {
+	private Field getField() {
 	
 		return this.field;
 	}
 	
-	public void setField(Field field) {
+	private void setField(Field field) {
 		
 		this.field = field;
 	}
@@ -41,6 +41,6 @@ public class Player {
 	public void printField() {
 		
 		Main.out.println("\n** Speelveld: " + this.getName() + " **");
-		field.print();
+		this.getField().print();
 	}
 }

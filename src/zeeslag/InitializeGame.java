@@ -62,6 +62,8 @@ public class InitializeGame {
 			names[1] = Main.in.nextLine();
 		}
 		
+		Main.out.print("\n");
+		
 		return names;
 	}
 }

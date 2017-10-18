@@ -18,7 +18,7 @@ public class Field {
 		return this.map;
 	}
 	
-	public void setMap(HashMap<String, Square> map) {
+	private void setMap(HashMap<String, Square> map) {
 		
 		this.map = map;
 	}
@@ -33,14 +33,14 @@ public class Field {
 		this.sunkShips = number;
 	}
 	
-
+	
 	private  void generateField() {
 		
 		for(int i=0; i < 11; i++) {
 			
 			for(char a = 'A'; a < 'K'; a++) {
 			
-				map.put(i+""+a, new Square());
+				map.put(a+""+i, new Square());
 			}			
 		}
 	}
@@ -59,11 +59,11 @@ public class Field {
 			
 			for(char a = 'A'; a < 'K'; a++) {
 				
-				Square sq = map.get(i+""+a);
+				Square sq = this.getMap().get(a+""+i);
 				
 				if(sq.isShot() && sq.getShip() != null) {
 					
-					Main.out.print("~");
+					Main.out.print(sq.getShip());
 				}
 				if(sq.isShot() && sq.getShip() != null) {
 					

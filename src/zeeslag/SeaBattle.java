@@ -1,9 +1,13 @@
 package zeeslag;
 
+import java.util.Random;
+
 public class SeaBattle {
 	
 	private Player player1;
 	private Player player2;
+	private boolean singlePlayer = true;
+	private boolean playing = true;
 
 	public SeaBattle(Player p1) {
 		
@@ -14,6 +18,7 @@ public class SeaBattle {
 		
 		this.setPlayer1(p1);
 		this.setPlayer2(p2);
+		this.setSinglePlayer(false);
 	}
 
 	public Player getPlayer1() {
@@ -36,26 +41,82 @@ public class SeaBattle {
 		this.player2 = player2;
 	}
 	
-	private void printPlayers() {
+	private void setSinglePlayer(boolean mode) {
 		
-		Main.out.println("\n**Spelers**");
-		if(player1 != null) {
-			
-			Main.out.println("Speler 1: " + this.getPlayer1().getName());
-		}
+		this.singlePlayer = mode;
+	}
+	
+	private boolean getSinglePlayer() {
 		
-		if(player2 != null) {
-			
-			Main.out.println("Speler 2: " + this.getPlayer2().getName() + "\n");
-		}
+		return this.singlePlayer;
+	}
+	
+	private void setPlaying(boolean mode) {
+		
+		this.playing = mode;
+	}
+	
+	private boolean getPlaying() {
+		
+		return this.playing;
 	}
 	
 	public void play() {
-	
-		this.printPlayers();
 		
-		if(this.getPlayer1() != null && this.getPlayer2() != null) {
+		if(this.getSinglePlayer()) {
+					
+			this.playSinglePlayer();
+		}
+		
+		else {
+			this.rollStartingPlayer();
+			this.playMultiPlayer();
+		}
+	}
+	
+	
+	private void rollStartingPlayer() {
+		
+		Random rand = new Random();
+		
+		int n = rand.nextInt(2) + 1;
+		
+		if(n == 1) {
 			
+			Main.out.println(this.getPlayer1().getName() + " mag beginnen!\n");
+		}
+		else {
+			
+			Main.out.println(this.getPlayer2().getName() + " mag beginnen!\n");
+			
+			Player dummyPlayer = this.getPlayer1();
+			
+			this.setPlayer1(this.getPlayer2());
+			this.setPlayer2(dummyPlayer);
+		}
+	}
+	
+	private void playSinglePlayer() {
+		
+	}
+	
+	private void playMultiPlayer() {
+		
+		int currentPlayer = 1;
+		
+		while(this.getPlaying()) {
+			
+			if(currentPlayer == 1) {
+				
+				Main.out.println("**" + this.getPlayer1().getName() + " is aan de beurt! **");
+				this.getPlayer1().printField();
+				break;
+			}			
+			else {
+				Main.out.println("**" + this.getPlayer2().getName() + " is aan de beurt! **");
+				this.getPlayer2().printField();
+				break;
+			}
 		}
 	}
 }
