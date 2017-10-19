@@ -98,6 +98,11 @@ public class SeaBattle {
 	
 	private void playSinglePlayer() {
 		
+		while(this.getPlaying()) {
+			
+			this.getPlayer1().printField();
+			break;
+		}
 	}
 	
 	private void playMultiPlayer() {

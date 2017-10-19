@@ -9,6 +9,7 @@ public class Square {
 	public Square() {
 	
 		this.setShot(false);
+		this.setShip("none");
 	}
 	
 	public String getShip() {

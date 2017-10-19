@@ -4,7 +4,7 @@ public class Ship {
 	
 	private String name;
 	private int size;
-	private boolean destroyed;
+	private boolean destroyed = false;
 
 	public Ship(int type) {
 	
@@ -12,7 +12,30 @@ public class Ship {
 			
 			this.setName("Vliegdekschip");
 			this.setSize(5);
-			this.setDestroyed(false);
+		}
+		
+		if(type == 2 ) {
+			
+			this.setName("Slagschip");
+			this.setSize(4);
+		}
+		
+		if(type == 3) {
+			
+			this.setName("Onderzeeër");
+			this.setSize(3);			
+		}
+		
+		if(type == 4) {
+			
+			this.setName("Torpedobootjager");
+			this.setSize(3);
+		}
+		
+		if(type == 5) {
+			
+			this.setName("Patrouilleboot");
+			this.setSize(2);
 		}
 	}
 
@@ -41,8 +64,13 @@ public class Ship {
 		return destroyed;
 	}
 
-	public void setDestroyed(boolean destroyed) {
+	private void setDestroyed(boolean destroyed) {
 	
 		this.destroyed = destroyed;
+	}
+	
+	public void destroyShip() {
+		
+		this.setDestroyed(true);
 	}
 }
