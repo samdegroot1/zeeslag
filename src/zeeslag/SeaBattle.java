@@ -100,8 +100,7 @@ public class SeaBattle {
 		
 		while(this.getPlaying()) {
 			
-			this.getPlayer1().printField();
-			break;
+			this.playTurn(this.getPlayer1(), false);
 		}
 	}
 	
@@ -122,6 +121,29 @@ public class SeaBattle {
 				this.getPlayer2().printField();
 				break;
 			}
+		}
+	}
+	
+	private void playTurn(Player player, boolean retry) {
+				
+		if(!retry) {
+			
+			player.printField();	
+		}
+		
+		Main.out.print(this.getPlayer1().getName()+ ", geef de locatie die je wilt beschieten:");
+		
+		String target = Main.in.nextLine();
+		
+		if(player.checkValidField(target)) {
+			
+			Main.out.println("valid");
+			player.shootField(target);
+		} 
+		else {
+			
+			Main.out.println("Dit is geen geldige locatie!\n ");
+			this.playTurn(player, true);
 		}
 	}
 }
