@@ -35,7 +35,6 @@ public class Field {
 		this.sunkShips = number;
 	}
 	
-	
 	private  void generateField() {
 		
 		for(int i=0; i < 11; i++) {
@@ -97,19 +96,22 @@ public class Field {
 		
 		if(posFound == true && !result.equals(null)) {
 			
-			Main.out.println("Schip " + ship.getName() + " is mogelijk te plaatsen!");
+			if(Main.debug) {
+			
+				Main.out.println("Schip " + ship.getName() + " is mogelijk te plaatsen!");
+			}			
 			
 			String name = ship.getName().substring(0, 1);
 			
 			for(int i=0; i < ship.getSize(); i++) {
+												
+				if(Main.debug) {
+					
+					Main.out.println("Length: " + ship.getSize() + " index: " + i + " key: " + result[i]);
+				}
 				
-				Main.out.println("Length: " + ship.getSize() + " index: " + i + " key: " + result[i]);
 				this.getMap().get(result[i]).setShip(name);
 			}
-		}				
-		else {
-			
-			Main.out.println("Schip " + ship.getName() + " is NIET mogelijk te plaatsen!");
 		}
 	}
 	
@@ -127,7 +129,10 @@ public class Field {
 				
 				try {
 					
-					Main.out.println("Key: " + x+""+y);
+					if(Main.debug) {
+					
+						Main.out.println("Key: " + x+""+y);
+					}					
 					
 					String sq = this.getMap().get(x+""+y).getShip();
 					
@@ -153,16 +158,14 @@ public class Field {
 					case "down":
 						y--;
 					break;
-				}
-				
+				}				
 			}												
 		}
 		
 		if(remainingSquares == 0) {
 			
 			return squares;
-		}
-		
+		}		
 		else {
 			
 			return null;
@@ -197,14 +200,49 @@ public class Field {
 				
 				Square sq = this.getMap().get(a+""+i);
 				
-//				if(sq.isShot() && sq.getShip() != "none") {
-//					
-//					Main.out.print(sq.getShip());
-//				}
-//				if(sq.isShot() && sq.getShip() != "none") {
-//					
-//					Main.out.print("~");
-//				}			
+				if(sq.isShot() && sq.getShip() != "none") {
+					
+					Main.out.print(sq.getShip());
+				}
+				if(sq.isShot() && sq.getShip() != "none") {
+					
+					Main.out.print("~");
+				}
+				
+				else {
+					
+					Main.out.print(".");
+				}
+			}
+			
+			Main.out.print("\n");
+		}
+		
+		Main.out.println("  ABCDEFGHIJ\n");
+		
+		if(Main.cheat) {
+			
+			this.cheatPrint();
+		}
+	}
+	
+	private void cheatPrint() {
+		
+		System.out.println("** CHEAT **");
+			
+		for(int i=10; i >= 1; i--) {
+						
+			if(i < 10) {
+				
+				Main.out.print(" " + i);
+			} 
+			else {
+				Main.out.print(i);
+			}
+			
+			for(char a = 'A'; a < 'K'; a++) {
+				
+				Square sq = this.getMap().get(a+""+i);
 				
 				if(!sq.getShip().equals("none")) {
 					
