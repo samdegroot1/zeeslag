@@ -28,7 +28,7 @@ public class Player {
 		}
 	}
 	
-	private Field getField() {
+	public Field getField() {
 	
 		return this.field;
 	}
@@ -44,58 +44,27 @@ public class Player {
 		this.getField().print();
 	}
 	
-	public void shootField(String target) {
+	public void shoot(String target) {
 		
-		if(target.matches("[0-9]+[a-zA-Z]{1}")) {
-			
-			target = this.switchXY(target);
-		}
-		
-		Square sq = this.getField().getMap().get(target);
-		sq.setShot(true);
-		
-		//save shot
+		this.getField().shootField(target);
 	}
 	
-	public boolean checkValidField(String target) {
-		
-		if(target.matches("[0-9]+[a-zA-Z]{1}")) {
-		
-			target = this.switchXY(target);
+	public boolean checkVictory() {
+	
+		if(this.getField().getSunkShips() == 5) {
+			
+			Main.out.println(this.getName() + " heeft het spel gewonnen!");
+			
+			return true;
 		}
 		
-		try {
+		if(this.getField().getSunkShips() == 1 && Main.cheat) {
 			
-			Square sq = this.getField().getMap().get(target);
+			Main.out.println(this.getName() + " heeft het spel in cheat modus gewonnen!");
 			
-			if(sq != null) {
-			
-				return true;
-			}
+			return true;
 		}
-		catch(ArrayIndexOutOfBoundsException exception) {}
 		
 		return false;
-	}
-	
-	private String switchXY(String target) {
-		
-		char x;
-		
-		if(target.length() == 2) {
-			
-			x = target.charAt(1);
-		}
-		
-		else {
-			
-			x = target.charAt(2);
-		}
-		
-		target = x + target.substring(0,2);
-		
-		Main.out.println("New target: " + target);
-		
-		return target;
 	}
 }

@@ -113,13 +113,13 @@ public class SeaBattle {
 			if(currentPlayer == 1) {
 				
 				Main.out.println("**" + this.getPlayer1().getName() + " is aan de beurt! **");
-				this.getPlayer1().printField();
-				break;
+				this.playTurn(this.getPlayer1(), false);
+				currentPlayer = 2;
 			}			
 			else {
 				Main.out.println("**" + this.getPlayer2().getName() + " is aan de beurt! **");
-				this.getPlayer2().printField();
-				break;
+				this.playTurn(this.getPlayer2(), false);
+				currentPlayer = 1;
 			}
 		}
 	}
@@ -128,22 +128,26 @@ public class SeaBattle {
 				
 		if(!retry) {
 			
-			player.printField();	
+			player.printField();
 		}
 		
-		Main.out.print(this.getPlayer1().getName()+ ", geef de locatie die je wilt beschieten:");
+		Main.out.print(player.getName()+ ", geef de locatie die je wilt beschieten:");
 		
-		String target = Main.in.nextLine();
+		String target = Main.in.nextLine().toUpperCase();
 		
-		if(player.checkValidField(target)) {
+		if(player.getField().checkValidField(target)) {
 			
-			Main.out.println("valid");
-			player.shootField(target);
+			player.shoot(target);
 		} 
 		else {
 			
 			Main.out.println("Dit is geen geldige locatie!\n ");
 			this.playTurn(player, true);
+		}
+		
+		if(player.checkVictory()) {
+			
+			this.setPlaying(false);
 		}
 	}
 }

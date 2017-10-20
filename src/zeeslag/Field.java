@@ -6,6 +6,7 @@ import java.util.Random;
 public class Field {
 
 	private HashMap <String, Square> map;
+	private HashMap <String, Ship> ships;
 	private int sunkShips;
 	
 	public Field() {
@@ -25,6 +26,16 @@ public class Field {
 		this.map = map;
 	}
 	
+	private void setShips(HashMap<String, Ship> ships) {
+		
+		this.ships = ships;
+	}
+	
+	private HashMap<String, Ship> getShips() {
+		
+		return this.ships;
+	}
+	
 	public int getSunkShips() {
 	
 		return this.sunkShips;
@@ -40,15 +51,15 @@ public class Field {
 		for(int i=0; i < 11; i++) {
 			
 			for(char a = 'A'; a < 'K'; a++) {
-			
-				map.put(a+""+i, new Square());
-			}			
+				
+				map.put(a+""+i, new Square());				
+			}	
 		}
 	}
 	
 	private void makeShips() {
 		
-		HashMap <String, Ship> ships = new HashMap();
+		HashMap<String, Ship> ships = new HashMap<String ,Ship>();
 		
 		ships.put("aircraftCarrier", new Ship(1));
 		ships.put("battleShip", new Ship(2));
@@ -56,9 +67,11 @@ public class Field {
 		ships.put("destroyer", new Ship(4));
 		ships.put("patrolBoat", new Ship(5));
 		
-		for(String key : ships.keySet()) {
+		this.setShips(ships);
+		
+		for(String key : this.getShips().keySet()) {
 			
-			this.placeShip(ships.get(key));
+			this.placeShip(this.getShips().get(key));
 		}
 	}
 	
@@ -111,6 +124,7 @@ public class Field {
 				}
 				
 				this.getMap().get(result[i]).setShip(name);
+				this.getMap().get(result[i]).setShipType(ship.getShipType());
 			}
 		}
 	}
@@ -198,18 +212,25 @@ public class Field {
 			
 			for(char a = 'A'; a < 'K'; a++) {
 				
-				Square sq = this.getMap().get(a+""+i);
+				Square square = this.getMap().get(a+""+i);
+				Ship ship = this.getShipByType(square.getShipType());
 				
-				if(sq.isShot() && sq.getShip() != "none") {
+			
+				if(square.isShot() && square.getShip() != "none" && ship.getDestroyed()) {
 					
-					Main.out.print(sq.getShip());
+					Main.out.print(square.getShip());
 				}
-				if(sq.isShot() && sq.getShip() != "none") {
+				if(square.isShot() && square.getShip() != "none" && !ship.getDestroyed()) {
+					
+					Main.out.print("*");
+				}
+				
+				if(square.isShot() && square.getShip() == "none") {
 					
 					Main.out.print("~");
 				}
 				
-				else {
+				if(!square.isShot()) {
 					
 					Main.out.print(".");
 				}
@@ -242,11 +263,11 @@ public class Field {
 			
 			for(char a = 'A'; a < 'K'; a++) {
 				
-				Square sq = this.getMap().get(a+""+i);
+				Square square = this.getMap().get(a+""+i);
 				
-				if(!sq.getShip().equals("none")) {
+				if(!square.getShip().equals("none")) {
 					
-					Main.out.print(sq.getShip());
+					Main.out.print(square.getShip());
 				}
 				
 				else {
@@ -259,5 +280,102 @@ public class Field {
 		}
 		
 		Main.out.println("  ABCDEFGHIJ\n");
+	}
+	
+	public boolean checkValidField(String target) {
+		
+		if(target.matches("[0-9]+[a-zA-Z]{1}")) {
+		
+			target = this.switchXY(target);
+		}
+		
+		try {
+			
+			Square sq = this.getMap().get(target);
+			
+			if(sq != null) {
+			
+				return true;
+			}
+		}
+		catch(ArrayIndexOutOfBoundsException exception) {}
+		
+		return false;
+	}
+	
+	
+	public void shootField(String target) {
+		
+		if(target.matches("[0-9]+[a-zA-Z]{1}")) {
+			
+			target = this.switchXY(target);
+		}
+		
+		Square square = this.getMap().get(target);
+		Ship ship = this.getShipByType(square.getShipType());
+		
+		square.setShot(true);
+		
+		if(ship != null) {
+		
+			ship.addShotHit();
+			
+			if(ship.getDestroyed()) {
+				
+				this.addSunkShip();
+			}
+		}		
+	}
+	
+	private String switchXY(String target) {
+		
+		char x;
+		
+		if(target.length() == 2) {
+			
+			x = target.charAt(1);
+			target = x + target.substring(0,2);
+		}
+		else {
+			
+			x = target.charAt(2);
+			target = x + target.substring(0,1);
+		}
+		
+		if(Main.debug) {
+			
+			Main.out.println("Returned new target: " + target);
+		}
+				
+		return target;
+	}
+	
+	private Ship getShipByType(int type) {
+			
+		switch(type) {
+		
+			case 1:
+				return this.getShips().get("aircraftCarrier");
+
+			case 2:
+				return this.getShips().get("battleShip");
+
+			case 3:
+				return this.getShips().get("subMarine");
+
+			case 4:
+				return this.getShips().get("destroyer");
+
+			case 5:
+				return this.getShips().get("patrolBoat");
+		}
+		
+		return null;
+	}
+	
+	private void addSunkShip() {
+		
+		int sunkShips = this.getSunkShips() + 1;
+		this.setSunkShips(sunkShips);
 	}
 }

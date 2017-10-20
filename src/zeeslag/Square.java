@@ -3,6 +3,7 @@ package zeeslag;
 public class Square {
 
 	private String ship;
+	private int shipType;
 	private boolean shot;
 	
 	
@@ -27,5 +28,15 @@ public class Square {
 	public void setShot(boolean shot) {
 	
 		this.shot = shot;
+	}
+	
+	public void setShipType(int type) {
+		
+		this.shipType = type;
+	}
+	
+	public int getShipType() {
+		
+		return this.shipType;
 	}
 }
