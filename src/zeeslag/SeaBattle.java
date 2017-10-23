@@ -1,6 +1,7 @@
 /**
 	@class: SeaBattle	
-	@desciption:
+	@desciption: This class handles the playturns for singleplayer and multiplayer; which player's turn it is and interacting with the player
+	Also handles game progress like who's the winner and asks to play again.
 	
 	@author Sam de Groot
 	@version 1.0
@@ -166,6 +167,10 @@ public class SeaBattle {
 		@method: playSinglePlayer()
 		@description: 2 players given. This function handles multiplayer logic to keep the game running until a player wins.
 		When the players wants to play again the fields get a reset and the game restarts here.
+		
+		@param Player player: This variable contains the player whose turn it is to play.
+		@param boolean retry: This variable is true when the player gave a invalid field. This prevents the playfield to be printed again. 
+		Which improves readability.
 	 */
 	private void playTurn(Player player, boolean retry) {
 				
@@ -194,6 +199,12 @@ public class SeaBattle {
 		}
 	}
 	
+	/**
+ 		@method: askPlayAgain()
+ 		@description: A player won. Ask if they wanna play again.
+ 		
+ 		@return boolean;
+	 */
 	private boolean askPlayAgain() {
 		
 		Main.out.println("Spel opnieuw spelen? (ja/nee)");

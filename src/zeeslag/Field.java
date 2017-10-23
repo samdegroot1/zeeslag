@@ -1,3 +1,12 @@
+/**
+	@class: Field	
+	@desciption: Generating the printfield for the player(s).
+	Printing/updating the field and ships on the field.
+	
+	@author Sam de Groot
+	@version 1.0
+*/
+
 package zeeslag;
 
 import java.util.HashMap;
@@ -41,7 +50,7 @@ public class Field {
 		return this.sunkShips;
 	}
 	
-	public void setSunkShips(int number) {
+	private void setSunkShips(int number) {
 		
 		this.sunkShips = number;
 	}
@@ -155,6 +164,8 @@ public class Field {
 		@param String key: Unique key of the starting square.
 		@param String direction: Contains the direction the boat will be laying at.
 		@param int Length: The length of the boat. In other words; how many space there is needed.
+		
+		@return String[] squares: This array contains keys where it is possible to place the boat. Null if not possible.
 	*/
 	private String[] checkPositions (String key, String direction, int length) {
 		
@@ -213,6 +224,12 @@ public class Field {
 		}
 	}
 	
+	/**
+ 		@method: generateRandomKey()
+ 		@description: Generates a random key in the range of which the playfield is being played (1-10) & (A-J).
+ 		
+ 		@return String: In the format of a key like "C3".
+	 */
 	private String generateRandomKey() {
 		
 		Random rand = new Random();		
@@ -225,6 +242,10 @@ public class Field {
 		return x+""+y;
 	}
 	
+	/**
+ 		@method: print()
+ 		@description: This function prints the playfield of a player. Output is different on the state of the square.
+	 */
 	public void print() {
 		
 		for(int i=10; i >= 1; i--) {
@@ -274,6 +295,10 @@ public class Field {
 		}
 	}
 	
+	/**
+ 		@method: cheatPrint()
+ 		@description: If cheat mode is enabled, a extra copy of the playfield is printed which exposes the boats positions.
+	 */
 	private void cheatPrint() {
 		
 		System.out.println("** CHEAT **");
@@ -309,6 +334,13 @@ public class Field {
 		Main.out.println("  ABCDEFGHIJ\n");
 	}
 	
+	/**
+ 		@method: checkValidField()
+ 		@description: Checks if the user's given target is a valid in the range of the playfield.
+ 		
+ 		@param String target: Contains the user's input target.
+ 		@return boolean: True if target is square, else false.
+	 */
 	public boolean checkValidField(String target) {
 		
 		if(target.matches("[0-9]+[a-zA-Z]{1}")) {
@@ -330,7 +362,12 @@ public class Field {
 		return false;
 	}
 	
-	
+	/**
+ 		@method: shootField()
+ 		@description: Shoots the field, if the field contains a ship a hit is added to that field.
+ 		
+ 		@param String target: User's given target.
+	 */
 	public void shootField(String target) {
 		
 		if(target.matches("[0-9]+[a-zA-Z]{1}")) {
@@ -345,7 +382,7 @@ public class Field {
 		
 		if(ship != null) {
 		
-			ship.addShotHit();
+			ship.addShotHit();			
 			
 			if(ship.getDestroyed()) {
 				
@@ -354,6 +391,12 @@ public class Field {
 		}		
 	}
 	
+	/**
+ 		@method: switchXY()
+ 		@description: If the user gives a target like 10B this function converts the target to B10.
+ 		
+ 		@return String: Reformatted target.
+	 */
 	private String switchXY(String target) {
 		
 		char x;
@@ -377,6 +420,13 @@ public class Field {
 		return target;
 	}
 	
+	/**
+ 		@method: getShipBy()
+ 		@description: Function to return a ship by it's type instead of his name. To improve handling with the boats.
+ 		
+ 		@param int type: Integer identifying the ship by it's type.
+ 		@return Ship: Ship matching with the given type.
+	 */
 	private Ship getShipByType(int type) {
 			
 		switch(type) {
@@ -400,6 +450,10 @@ public class Field {
 		return null;
 	}
 	
+	/**
+ 		@method: addSunkShip()
+ 		@description: The targeted ship is destroyed so the counter for sunk ships has to be increased.
+	 */
 	private void addSunkShip() {
 		
 		int sunkShips = this.getSunkShips() + 1;

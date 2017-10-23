@@ -1,3 +1,11 @@
+/**
+	@class: Square
+	@desciption: Contains the properties of a certain square in the playfield.
+	
+	@author Sam de Groot
+	@version 1.0
+*/
+
 package zeeslag;
 
 public class Square {

@@ -1,3 +1,11 @@
+/**
+	@class: Ship
+	@desciption: This class is mainly used to maintain the ship's states and properties.
+	
+	@author Sam de Groot
+	@version 1.0
+*/
+
 package zeeslag;
 
 public class Ship {
@@ -91,15 +99,21 @@ public class Ship {
 		this.shotHits = hits;
 	}
 	
-	public int getShotHits() {
+	private int getShotHits() {
 		
 		return this.shotHits;
 	}
 	
+	/**
+ 		@method: addShotHit()
+ 		@description: The user shot the field where this boat is. Add hit point to the boat.
+	 */
 	public void addShotHit() {
 		
 		int shots = this.getShotHits() + 1;
 		this.setShotHits(shots);
+		
+		Main.out.println("Gefeliciteerd je hebt raak geschoten!\n");
 		
 		if(shots == this.getSize()) {
 			
@@ -109,6 +123,10 @@ public class Ship {
 		}
 	}
 	
+	/**
+ 		@method: destroyShip()
+ 		@description: All positions of the ship are hitted. Ship is destroyed.
+	 */
 	public void destroyShip() {
 		
 		this.setDestroyed(true);

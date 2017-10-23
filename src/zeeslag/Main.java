@@ -1,3 +1,11 @@
+/**
+	@class: Main
+	@desciption: Program runs main at start. The game is created and started. Also Handling the player amount and name(s) here.
+	
+	@author Sam de Groot
+	@version 1.0
+*/
+
 package zeeslag;
 
 import java.io.PrintStream;
@@ -8,7 +16,7 @@ public class Main {
 	public static final Scanner in = new Scanner(System.in);
 	public static final PrintStream out = System.out;
 	public static final boolean cheat = false;
-	public static final boolean debug = true;
+	public static final boolean debug = false;
 	
 	
 	/**
