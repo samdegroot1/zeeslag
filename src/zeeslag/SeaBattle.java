@@ -102,6 +102,13 @@ public class SeaBattle {
 			
 			this.playTurn(this.getPlayer1(), false);
 		}
+		
+		if(this.askPlayAgain()) {
+			
+			this.getPlayer1().resetField();
+			this.setPlaying(true);
+			this.playSinglePlayer();
+		}
 	}
 	
 	private void playMultiPlayer() {
@@ -121,6 +128,14 @@ public class SeaBattle {
 				this.playTurn(this.getPlayer2(), false);
 				currentPlayer = 1;
 			}
+		}
+		
+		if(this.askPlayAgain()) {
+			
+			this.getPlayer1().resetField();
+			this.getPlayer2().resetField();
+			this.setPlaying(true);
+			this.playMultiPlayer();
 		}
 	}
 	
@@ -150,4 +165,30 @@ public class SeaBattle {
 			this.setPlaying(false);
 		}
 	}
+	
+	private boolean askPlayAgain() {
+		
+		Main.out.println("Spel opnieuw spelen? (ja/nee)");
+		
+		String answer = Main.in.nextLine().toLowerCase().trim();
+		
+		if(answer.equals("ja")) {
+			
+			return true;
+		}
+		
+		if(answer.equals("nee")) {
+			
+			Main.out.println("\nBedankt voor het spelen!");			
+			System.exit(0);
+		}
+		
+		else {
+			
+			Main.out.println("Ongeldige invoer! \n");
+			this.askPlayAgain();
+		}
+		
+		return false;
+ 	}
 }

@@ -67,4 +67,9 @@ public class Player {
 		
 		return false;
 	}
+	
+	public void resetField() {
+		
+		this.setField(new Field());
+	}
 }

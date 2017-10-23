@@ -25,9 +25,15 @@ public class InitializeGame {
 	
 	public void askPlayerAmount() {
 		
-		Main.out.print("Geef aantal spelers (1/2): ");
-			
-		int amount = Integer.parseInt(Main.in.nextLine());		
+		int amount = 0;
+		Main.out.print("Geef aantal spelers (1/2): ");		
+		
+		try {
+		
+			amount = Integer.parseInt(Main.in.nextLine());
+		}		
+		catch(Exception e) {}
+				
 		
 		this.setPlayerAmount(amount);		
 	}

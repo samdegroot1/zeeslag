@@ -334,12 +334,12 @@ public class Field {
 		if(target.length() == 2) {
 			
 			x = target.charAt(1);
-			target = x + target.substring(0,2);
+			target = x + target.substring(0,1);
 		}
 		else {
 			
 			x = target.charAt(2);
-			target = x + target.substring(0,1);
+			target = x + target.substring(0,2);
 		}
 		
 		if(Main.debug) {
