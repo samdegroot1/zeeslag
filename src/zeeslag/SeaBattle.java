@@ -1,3 +1,11 @@
+/**
+	@class: SeaBattle	
+	@desciption:
+	
+	@author Sam de Groot
+	@version 1.0
+*/
+
 package zeeslag;
 
 import java.util.Random;
@@ -74,7 +82,12 @@ public class SeaBattle {
 		}
 	}
 	
-	
+	/**
+ 		@method: rollStartingPlayer()
+ 		@description: Based on a random number the starting player is picked.
+ 		it switches player1 with player2 if necessary. So the battle always starts with player1.
+ 		(Which could be p2 in the first place)
+	 */
 	private void rollStartingPlayer() {
 		
 		Random rand = new Random();
@@ -96,6 +109,11 @@ public class SeaBattle {
 		}
 	}
 	
+	/**
+ 		@method: playSinglePlayer()
+ 		@description: 1 player is given. This function handles singleplayer logic to keep the game runnin until a player wins.
+ 		When the player wants to play again the field will get a reset and the game restarts here.
+	 */
 	private void playSinglePlayer() {
 		
 		while(this.getPlaying()) {
@@ -111,6 +129,11 @@ public class SeaBattle {
 		}
 	}
 	
+	/**
+		@method: playSinglePlayer()
+		@description: 2 players given. This function handles multiplayer logic to keep the game running until a player wins.
+		When the players wants to play again the fields get a reset and the game restarts here.
+	 */
 	private void playMultiPlayer() {
 		
 		int currentPlayer = 1;
@@ -139,6 +162,11 @@ public class SeaBattle {
 		}
 	}
 	
+	/**
+		@method: playSinglePlayer()
+		@description: 2 players given. This function handles multiplayer logic to keep the game running until a player wins.
+		When the players wants to play again the fields get a reset and the game restarts here.
+	 */
 	private void playTurn(Player player, boolean retry) {
 				
 		if(!retry) {

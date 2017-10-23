@@ -9,7 +9,14 @@ public class Main {
 	public static final PrintStream out = System.out;
 	public static final boolean cheat = false;
 	public static final boolean debug = true;
-
+	
+	
+	/**
+		@method: main()		
+		@desciption: Asking the player with how many players to play.
+		
+		@param String[] args
+	 */
 	public static void main(String[] args) {
 		
 		InitializeGame init = new InitializeGame();

@@ -46,6 +46,11 @@ public class Field {
 		this.sunkShips = number;
 	}
 	
+	/**
+		@method: generateField()
+		@description: Generating the playfield using 2 loops. 
+		Indexes of the loops are used to make a unique key for that square on the field.
+	*/
 	private  void generateField() {
 		
 		for(int i=0; i < 11; i++) {
@@ -57,6 +62,11 @@ public class Field {
 		}
 	}
 	
+	/**
+		@method: makeShips()
+		@desciption: Making 5 different ships. Each with their own key.
+		Placing each ship on the field when made.
+	*/
 	private void makeShips() {
 		
 		HashMap<String, Ship> ships = new HashMap<String ,Ship>();
@@ -75,6 +85,14 @@ public class Field {
 		}
 	}
 	
+	/**
+		@method: placeShip()
+		@description: Placing a ship on a available position in a certain direction with the length of the ship.
+		Before the ship is placed checkPositions() checks if the boat can be placed in that direction.
+		After 4 failing tries (directions) the function calls itself again with the same ship to try again with a new random key.
+		
+		@param Ship ship: The ship to be placed on the field.
+	*/
 	private void placeShip(Ship ship) {
 		
 		String key = this.generateRandomKey();
@@ -129,6 +147,15 @@ public class Field {
 		}
 	}
 	
+	/**
+		@method: checkPositions()
+		@description: In combination with the random key of a Square, direction and length of the boat.
+		This function looks that all the squares in that direction are empty. If not it returns null.
+		
+		@param String key: Unique key of the starting square.
+		@param String direction: Contains the direction the boat will be laying at.
+		@param int Length: The length of the boat. In other words; how many space there is needed.
+	*/
 	private String[] checkPositions (String key, String direction, int length) {
 		
 		char x = key.charAt(0);

@@ -1,5 +1,13 @@
-package zeeslag;
+/**
+	@class: InitializeGame	
+	@desciption: Class is used to handle some game initialization.
+	The code written here is seperated from the rest of the classes to keep things clean and seperated from eachother.
+	
+	@author Sam de Groot
+	@version 1.0
+*/
 
+package zeeslag;
 
 public class InitializeGame {
 	
@@ -22,7 +30,13 @@ public class InitializeGame {
 			this.playerAmount = amount;
 		}
 	}
-	
+		
+	/**
+		@method: askPlayerAmount()
+		@desciprion: Asking the player with how many players to play.
+		
+		@return int amount of players.
+	*/
 	public void askPlayerAmount() {
 		
 		int amount = 0;
@@ -38,6 +52,10 @@ public class InitializeGame {
 		this.setPlayerAmount(amount);		
 	}
 
+	/**
+		@method: printIntro()
+		@description: Print intro message at the start of the game.
+	 */
 	public void printIntro() {
 		
 		Main.out.println("Welkom bij het spelletje Zeeslag!\n");
@@ -45,6 +63,12 @@ public class InitializeGame {
 		Main.out.println("voor hij jouw boten te pakken heeft genomen. \n");
 	}
 	
+	/**
+		@method: askPlayerNames()
+		@Description: Depending on the amount players given. Asking their names.
+		
+		@return String[] amount of players.
+	 */
 	public String[] askPlayerNames() {
 		
 		String[] names;
