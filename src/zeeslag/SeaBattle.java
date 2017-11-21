@@ -131,7 +131,7 @@ public class SeaBattle {
 	}
 	
 	/**
-		@method: playSinglePlayer()
+		@method: playMultiPlayer()
 		@description: 2 players given. This function handles multiplayer logic to keep the game running until a player wins.
 		When the players wants to play again the fields get a reset and the game restarts here.
 	 */
@@ -164,7 +164,7 @@ public class SeaBattle {
 	}
 	
 	/**
-		@method: playSinglePlayer()
+		@method: playTurn()
 		@description: 2 players given. This function handles multiplayer logic to keep the game running until a player wins.
 		When the players wants to play again the fields get a reset and the game restarts here.
 		

@@ -421,7 +421,7 @@ public class Field {
 	}
 	
 	/**
- 		@method: getShipBy()
+ 		@method: getShipByType()
  		@description: Function to return a ship by it's type instead of his name. To improve handling with the boats.
  		
  		@param int type: Integer identifying the ship by it's type.
